@@ -378,6 +378,19 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
 .pay-note{font-size:12.5px;color:var(--mid);margin-top:-4px}
 #cMore{width:100%;justify-content:center}
 
+
+.badge.orig{display:inline-flex;align-items:center;gap:8px;background:var(--silver);color:#000;border-color:var(--silver);font-weight:700}
+.badge.orig svg{width:15px;height:15px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:22px}
+.trust div{background:var(--card);padding:18px 14px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--silver);text-align:start}
+html[lang="ar"] .trust div{letter-spacing:0;font-size:15px}
+.trust svg{width:24px;height:24px;flex:none}
+.trust div:first-child{color:var(--white);font-weight:700}
+@media(max-width:820px){.trust{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.trust{grid-template-columns:1fr}}
+.tt-ic{display:inline-block;width:18px;height:18px}
+.tt-ic svg{width:100%;height:100%;fill:currentColor}
+
 .reveal{opacity:0;transform:translateY(30px);transition:1s ease}
 .reveal.in{opacity:1;transform:none}
 [data-ar],[data-en]{}
@@ -410,6 +423,7 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
       <li><a href="#contact" data-i18n="nav_contact">Follow</a></li>
     </ul>
     <div style="display:flex;gap:10px;align-items:center"><a class="langswitch" style="padding:7px 10px;display:grid;place-items:center" href="https://www.instagram.com/krox.eg/" target="_blank" rel="noopener" aria-label="Instagram"><i class="ig-ic" style="margin:0"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg></i></a>
+    <a class="langswitch" style="padding:7px 10px;display:grid;place-items:center" href="https://www.tiktok.com/@krox.eg" target="_blank" rel="noopener" aria-label="TikTok"><i class="tt-ic"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></i></a>
     <button class="langswitch cartbtn" id="cartBtn" type="button" aria-label="Cart"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg><span class="cbadge" id="cBadge">0</span></button>
     <button class="langswitch" id="langBtn" onclick="toggleLang()">العربية</button></div>
   </div>
@@ -474,7 +488,7 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
         <div class="p-thumbs" id="thumbs"></div>
       </div>
       <div class="p-info">
-        <div class="row"><span class="badge" data-i18n="avail">Now Available</span><span class="stock" data-i18n="stock">Limited first drop</span></div>
+        <div class="row"><span class="badge" data-i18n="avail">Now Available</span><span class="badge orig"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span data-i18n="orig">100% Original</span></span><span class="stock" data-i18n="stock">Limited first drop</span></div>
         <h3>KROX 001</h3>
         <div class="price"><span class="amt">1,399</span><span class="cur" data-i18n="cur">EGP</span></div>
         <p data-i18n="prod_p">The one that starts it all.</p>
@@ -499,6 +513,12 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
         <div class="pay-note" data-i18n="pay_note">Cash on delivery or InstaPay.</div>
       </div>
     </div>
+    <div class="trust reveal">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span data-i18n="tr1">100% Original product</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v10H3z"/><path d="M12 12m-2.5 0a2.5 2.5 0 105 0 2.5 2.5 0 10-5 0"/></svg><span data-i18n="tr2">Cash on delivery or InstaPay</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h12v10H2zM14 9h4l4 3v4h-8z"/><path d="M6 19m-1.5 0a1.5 1.5 0 103 0 1.5 1.5 0 10-3 0M17 19m-1.5 0a1.5 1.5 0 103 0 1.5 1.5 0 10-3 0"/></svg><span data-i18n="tr3">Shipping all over Egypt</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><span data-i18n="tr4">Order confirmed on WhatsApp</span></div>
+    </div>
     <div class="story" id="story">
       <div class="st-i reveal"><span class="n">01</span><h4 data-i18n="t1t">Premium Material</h4><p data-i18n="t1p">x</p></div>
       <div class="st-i reveal"><span class="n">02</span><h4 data-i18n="t2t">All-Day Comfort</h4><p data-i18n="t2p">x</p></div>
@@ -514,7 +534,7 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
       <div class="eyebrow">@krox.eg</div>
       <h2 data-i18n="ig_t">Follow The Journey</h2>
       <p data-i18n="ig_p">Every update, every reveal, first on Instagram. Follow our page and be the first to know when KROX 001 drops.</p>
-      <div class="btns"><a class="btn solid" href="https://www.instagram.com/krox.eg/" target="_blank" rel="noopener" data-i18n="cta2">Follow @krox.eg</a></div>
+      <div class="btns"><a class="btn solid" href="https://www.instagram.com/krox.eg/" target="_blank" rel="noopener" data-i18n="cta2">Follow @krox.eg</a><a class="btn ghost" href="https://www.tiktok.com/@krox.eg" target="_blank" rel="noopener" data-i18n="tt_follow">Follow on TikTok</a></div>
     </div>
     <div class="ig-stack reveal">
       <a class="ig-real" href="https://www.instagram.com/p/Deo30aEN5rB/" target="_blank" rel="noopener" aria-label="KROX Instagram post">
@@ -558,6 +578,7 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
       <a href="https://www.instagram.com/krox.eg/" target="_blank" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.4 7.2 2.3 8.4 2.2 8.8 2.2 12 2.2zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg>
       </a>
+      <a href="https://www.tiktok.com/@krox.eg" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
     </div>
     <div class="credit"><span data-i18n="wp_c">Website designed &amp; built by</span> <a href="https://web-prime0.vercel.app/" target="_blank" rel="noopener">web.prime</a></div>
     <div class="copy">© <span id="yr"></span> KROX®. <span data-i18n="rights">All rights reserved.</span></div>
@@ -607,7 +628,8 @@ document.querySelectorAll("img[data-asset]").forEach(i=>i.src=ASSETS[i.dataset.a
 </script>
 <script>
 const T = {
-  en:{c_add_more:"+ Add another piece",i_piece:"Piece",f_pay:"Payment method",p_cod:"Cash on delivery",p_cod_d:"Pay when you receive your order.",
+  en:{orig:"100% Original",tr1:"100% Original product",tr2:"Cash on delivery or InstaPay",tr3:"Shipping all over Egypt",tr4:"Order confirmed on WhatsApp",tt_follow:"Follow on TikTok",
+    c_add_more:"+ Add another piece",i_piece:"Piece",f_pay:"Payment method",p_cod:"Cash on delivery",p_cod_d:"Pay when you receive your order.",
     p_insta:"InstaPay",p_insta_d:"Transfer now, then send the screenshot on WhatsApp.",p_link:"Pay with InstaPay",
     p_warn:"⚠️ Important: you must send a screenshot of the transfer on WhatsApp to confirm your order.",p_warn2:"⚠️ Don't forget: send the transfer screenshot in the WhatsApp chat so we can confirm your order.",
     pay_note:"Pay by cash on delivery or InstaPay — InstaPay orders need a transfer screenshot on WhatsApp.",
@@ -639,8 +661,9 @@ const T = {
     s1:"Premium solid build",s2:"Signature KROX design",s3:"Nationwide delivery in Egypt",notify:"Get Notified",
     ig_t:"Follow The Journey",ig_p:"Every update, every reveal, first on Instagram. Follow our page and be the first to know when KROX 001 drops.",
     follow:"Follow",wp_t:"Want a website like this?",wp_p:"This site was designed and built by web.prime — your next idea, built for the web.",wp_b:"Visit web.prime",wp_c:"Website designed & built by",cap:"Stay tuned. Something big is coming… New design. Same vision. KROX.",ban_t:"Something Big Is Coming",ban_p:"New Design · Same Vision · KROX",rights:"All rights reserved.",
-    marq:["Stay Tuned","KROX 001","One Icon","Zero Limits","Made for Egypt","Built to Stand Out"],sw:"العربية"},
-  ar:{c_add_more:"+ أضف قطعة تانية",i_piece:"قطعة",f_pay:"طريقة الدفع",p_cod:"كاش عند الاستلام",p_cod_d:"ادفع لما الطلب يوصلك.",
+    marq:["100% Original","Stay Tuned","KROX 001","One Icon","Zero Limits","Made for Egypt","Built to Stand Out"],sw:"العربية"},
+  ar:{orig:"أصلي 100%",tr1:"منتج أصلي 100%",tr2:"كاش عند الاستلام أو انستاباي",tr3:"شحن لكل مصر",tr4:"تأكيد الطلب على واتساب",tt_follow:"تابعنا على تيك توك",
+    c_add_more:"+ أضف قطعة تانية",i_piece:"قطعة",f_pay:"طريقة الدفع",p_cod:"كاش عند الاستلام",p_cod_d:"ادفع لما الطلب يوصلك.",
     p_insta:"انستاباي",p_insta_d:"حوّل دلوقتي وابعت سكرين التحويل على واتساب.",p_link:"ادفع بانستاباي",
     p_warn:"⚠️ مهم: لازم تبعت سكرين من التحويل على واتساب عشان الطلب يتأكد.",p_warn2:"⚠️ ما تنساش: ابعت سكرين التحويل في شات واتساب عشان نأكد طلبك.",
     pay_note:"الدفع كاش عند الاستلام أو انستاباي — طلبات انستاباي لازم سكرين التحويل على واتساب.",
@@ -672,7 +695,7 @@ const T = {
     s1:"خامة صلبة بريميوم",s2:"تصميم KROX المميز",s3:"توصيل لكل أنحاء مصر",notify:"نبّهني عند الإطلاق",
     ig_t:"تابع الرحلة",ig_p:"كل جديد وكل كشف أول ما يتنزل على انستجرام. تابع صفحتنا وكن أول من يعرف لما KROX 001 ينزل.",
     follow:"تابع",wp_t:"عايز موقع زي ده لشغلك؟",wp_p:"الموقع ده اتصمم واتبرمج بواسطة web.prime — فكرتك الجاية، متبنية للويب.",wp_b:"زور web.prime",wp_c:"تصميم وبرمجة",cap:"ابقوا معانا. حاجة كبيرة جاية… تصميم جديد. نفس الرؤية. KROX.",ban_t:"حاجة كبيرة جاية",ban_p:"تصميم جديد · نفس الرؤية · KROX",rights:"جميع الحقوق محفوظة.",
-    marq:["ابقوا معانا","KROX 001","أيقونة واحدة","بلا حدود","صُنع لمصر","اتصمم عشان يفرق"],sw:"ENGLISH"}
+    marq:["أصلي 100%","ابقوا معانا","KROX 001","أيقونة واحدة","بلا حدود","صُنع لمصر","اتصمم عشان يفرق"],sw:"ENGLISH"}
 };
 let cur = 'en';
 function apply(l){
