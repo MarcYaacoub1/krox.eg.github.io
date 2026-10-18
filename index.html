@@ -364,6 +364,20 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
 #toast{position:fixed;bottom:90px;left:50%;translate:-50% 20px;background:var(--silver);color:#000;padding:12px 22px;font-size:14px;font-weight:600;z-index:140;opacity:0;pointer-events:none;transition:.35s}
 #toast.on{opacity:1;translate:-50% 0}
 
+
+.pay{display:grid;gap:10px}
+.fld .po{display:flex;align-items:flex-start;gap:12px;margin:0;padding:14px;border:1px solid var(--line);background:#0b0b0b;cursor:pointer;text-transform:none;letter-spacing:0;font-size:14px;color:var(--silver);transition:.2s}
+.fld .po:has(input:checked){border-color:var(--silver);background:#141414}
+.po input{accent-color:#e9e9e9;margin-top:4px;width:16px;height:16px;flex:none}
+.po b{display:block;color:var(--white);font-size:15px}
+.po small{display:block;color:var(--mid);font-size:12.5px;margin-top:2px}
+.instabox{margin-top:12px;padding:14px;border:1px dashed rgba(255,255,255,.35)}
+.instabox .btn{width:100%;justify-content:center}
+.warn{color:#ffd37a;font-size:13.5px;line-height:1.6;margin-top:12px;font-weight:600}
+.instabox .warn{margin-top:12px}
+.pay-note{font-size:12.5px;color:var(--mid);margin-top:-4px}
+#cMore{width:100%;justify-content:center}
+
 .reveal{opacity:0;transform:translateY(30px);transition:1s ease}
 .reveal.in{opacity:1;transform:none}
 [data-ar],[data-en]{}
@@ -482,6 +496,7 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
         <div class="sizes" id="sizes"></div>
         <div class="size-err" id="sizeErr"></div>
         <div class="btns"><button type="button" class="btn solid" id="buyNow" data-i18n="buy">Buy Now</button><button type="button" class="btn ghost" id="addCart" data-i18n="addc">Add to Cart</button></div>
+        <div class="pay-note" data-i18n="pay_note">Cash on delivery or InstaPay.</div>
       </div>
     </div>
     <div class="story" id="story">
@@ -556,6 +571,7 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
     <div id="cItems"></div>
     <div id="cEmpty" class="c-empty"><p data-i18n="c_empty">Your cart is empty.</p><button type="button" class="btn ghost" id="cShop" data-i18n="c_more">Continue shopping</button></div>
     <div id="cCheckout">
+      <div style="padding:16px 0 0"><button type="button" class="btn ghost" id="cMore" data-i18n="c_add_more">+ Add another piece</button></div>
       <div class="c-sum">
         <div class="r"><span data-i18n="c_sub">Subtotal</span><span id="cSub"></span></div>
         <div class="r t"><span data-i18n="c_tot">Total</span><span id="cTot"></span></div>
@@ -566,10 +582,20 @@ html[lang="ar"] .fld label{letter-spacing:0;font-size:14px}
       <div class="fld" id="fg"><label for="iGov" data-i18n="f_gov">Governorate</label><select id="iGov"></select><div class="e" data-i18n="e_gov">Please choose your governorate.</div></div>
       <div class="fld" id="fa"><label for="iAddr" data-i18n="f_addr">Full address</label><textarea id="iAddr" autocomplete="street-address"></textarea><div class="e" data-i18n="e_addr">Please enter your full address.</div></div>
       <div class="fld"><label for="iNote" data-i18n="f_note">Notes (optional)</label><input id="iNote"></div>
+      <div class="fld" id="fpay"><label data-i18n="f_pay">Payment method</label>
+        <div class="pay">
+          <label class="po"><input type="radio" name="pay" value="cod" checked><span><b data-i18n="p_cod">Cash on delivery</b><small data-i18n="p_cod_d">Pay when you receive your order.</small></span></label>
+          <label class="po"><input type="radio" name="pay" value="insta"><span><b data-i18n="p_insta">InstaPay</b><small data-i18n="p_insta_d">Transfer now, then send the screenshot on WhatsApp.</small></span></label>
+        </div>
+        <div id="instaBox" class="instabox" style="display:none">
+          <a class="btn solid" href="https://ipn.eg/S/marcyaacoub/instapay/5PuMlE" target="_blank" rel="noopener" data-i18n="p_link">Pay with InstaPay</a>
+          <p class="warn" data-i18n="p_warn">You must send a screenshot of the transfer on WhatsApp to confirm your order.</p>
+        </div>
+      </div>
       <button type="button" class="btn solid wa-btn" id="waBtn"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2z"/></svg><span data-i18n="wa_btn">Confirm order on WhatsApp</span></button>
       <div class="c-fine" data-i18n="c_fine">Your order is confirmed once you send the WhatsApp message.</div>
     </div>
-    <div id="cDone" class="c-done"><div class="ok">&#10003;</div><p data-i18n="c_done">Opening WhatsApp… send the message to confirm your order.</p><button type="button" class="btn ghost" id="cDoneX" style="margin-top:20px" data-i18n="c_close">Close</button></div>
+    <div id="cDone" class="c-done"><div class="ok">&#10003;</div><p data-i18n="c_done">Opening WhatsApp… send the message to confirm your order.</p><p id="cDoneI" class="warn" style="display:none;margin-top:16px" data-i18n="p_warn2">Don't forget: send the transfer screenshot in the chat.</p><button type="button" class="btn ghost" id="cDoneX" style="margin-top:20px" data-i18n="c_close">Close</button></div>
   </div>
 </aside>
 <div id="toast"></div>
@@ -581,7 +607,11 @@ document.querySelectorAll("img[data-asset]").forEach(i=>i.src=ASSETS[i.dataset.a
 </script>
 <script>
 const T = {
-  en:{buy:"Buy Now",addc:"Add to Cart",size_l:"Select size (EU)",size_err:"Please choose a size first.",added:"Added to cart ✓",
+  en:{c_add_more:"+ Add another piece",i_piece:"Piece",f_pay:"Payment method",p_cod:"Cash on delivery",p_cod_d:"Pay when you receive your order.",
+    p_insta:"InstaPay",p_insta_d:"Transfer now, then send the screenshot on WhatsApp.",p_link:"Pay with InstaPay",
+    p_warn:"⚠️ Important: you must send a screenshot of the transfer on WhatsApp to confirm your order.",p_warn2:"⚠️ Don't forget: send the transfer screenshot in the WhatsApp chat so we can confirm your order.",
+    pay_note:"Pay by cash on delivery or InstaPay — InstaPay orders need a transfer screenshot on WhatsApp.",
+    buy:"Buy Now",addc:"Add to Cart",size_l:"Select size (EU)",size_err:"Please choose a size first.",added:"Added to cart ✓",
     c_title:"Your Cart",c_empty:"Your cart is empty.",c_more:"Continue shopping",c_sub:"Subtotal",c_tot:"Total",c_ship:"Shipping cost is confirmed with you on WhatsApp.",
     f_name:"Full name",f_phone:"Phone number",f_gov:"Governorate",f_addr:"Full address",f_note:"Notes (optional)",
     e_name:"Please enter your name.",e_phone:"Enter a valid Egyptian mobile number.",e_gov:"Please choose your governorate.",e_addr:"Please enter your full address.",
@@ -610,7 +640,11 @@ const T = {
     ig_t:"Follow The Journey",ig_p:"Every update, every reveal, first on Instagram. Follow our page and be the first to know when KROX 001 drops.",
     follow:"Follow",wp_t:"Want a website like this?",wp_p:"This site was designed and built by web.prime — your next idea, built for the web.",wp_b:"Visit web.prime",wp_c:"Website designed & built by",cap:"Stay tuned. Something big is coming… New design. Same vision. KROX.",ban_t:"Something Big Is Coming",ban_p:"New Design · Same Vision · KROX",rights:"All rights reserved.",
     marq:["Stay Tuned","KROX 001","One Icon","Zero Limits","Made for Egypt","Built to Stand Out"],sw:"العربية"},
-  ar:{buy:"اشتري دلوقتي",addc:"أضف للسلة",size_l:"اختار المقاس (EU)",size_err:"اختار المقاس الأول.",added:"اتضافت للسلة ✓",
+  ar:{c_add_more:"+ أضف قطعة تانية",i_piece:"قطعة",f_pay:"طريقة الدفع",p_cod:"كاش عند الاستلام",p_cod_d:"ادفع لما الطلب يوصلك.",
+    p_insta:"انستاباي",p_insta_d:"حوّل دلوقتي وابعت سكرين التحويل على واتساب.",p_link:"ادفع بانستاباي",
+    p_warn:"⚠️ مهم: لازم تبعت سكرين من التحويل على واتساب عشان الطلب يتأكد.",p_warn2:"⚠️ ما تنساش: ابعت سكرين التحويل في شات واتساب عشان نأكد طلبك.",
+    pay_note:"الدفع كاش عند الاستلام أو انستاباي — طلبات انستاباي لازم سكرين التحويل على واتساب.",
+    buy:"اشتري دلوقتي",addc:"أضف للسلة",size_l:"اختار المقاس (EU)",size_err:"اختار المقاس الأول.",added:"اتضافت للسلة ✓",
     c_title:"سلة المشتريات",c_empty:"السلة فاضية.",c_more:"كمّل تسوق",c_sub:"الإجمالي الفرعي",c_tot:"الإجمالي",c_ship:"مصاريف الشحن بنأكدها معاك على واتساب.",
     f_name:"الاسم بالكامل",f_phone:"رقم الموبايل",f_gov:"المحافظة",f_addr:"العنوان بالتفصيل",f_note:"ملاحظات (اختياري)",
     e_name:"اكتب اسمك.",e_phone:"اكتب رقم موبايل مصري صحيح.",e_gov:"اختار المحافظة.",e_addr:"اكتب العنوان بالتفصيل.",
@@ -686,15 +720,15 @@ const SHOTS=["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEBAQEAwU
 })();
 
 (function(){
-  const WA='201553633075',PRICE=1399,SIZES=[36,37,38,39,40,41,42,43,44,45];
+  const WA='201553633075',PRICE=1399,SIZES=[41,42,43,44,45];
   const GOV=[["Cairo","القاهرة"],["Giza","الجيزة"],["Alexandria","الإسكندرية"],["Qalyubia","القليوبية"],["Port Said","بورسعيد"],["Suez","السويس"],["Dakahlia","الدقهلية"],["Sharqia","الشرقية"],["Gharbia","الغربية"],["Monufia","المنوفية"],["Beheira","البحيرة"],["Kafr El Sheikh","كفر الشيخ"],["Damietta","دمياط"],["Ismailia","الإسماعيلية"],["North Sinai","شمال سيناء"],["South Sinai","جنوب سيناء"],["Faiyum","الفيوم"],["Beni Suef","بني سويف"],["Minya","المنيا"],["Assiut","أسيوط"],["Sohag","سوهاج"],["Qena","قنا"],["Luxor","الأقصر"],["Aswan","أسوان"],["Red Sea","البحر الأحمر"],["New Valley","الوادي الجديد"],["Matrouh","مطروح"]];
   const $=id=>document.getElementById(id);
   const fmt=n=>n.toLocaleString('en-US');
   let cart=[],pick=null;
-  try{cart=JSON.parse(localStorage.getItem('krox_cart')||'[]').filter(x=>SIZES.includes(+x.size)&&x.qty>0)}catch(e){cart=[]}
+  try{JSON.parse(localStorage.getItem('krox_cart')||'[]').forEach(x=>{if(SIZES.includes(+x.size))for(let i=0;i<(x.qty||1);i++)cart.push({size:+x.size})})}catch(e){cart=[]}
   const save=()=>{try{localStorage.setItem('krox_cart',JSON.stringify(cart))}catch(e){}};
   const L=()=>T[cur];
-  const count=()=>cart.reduce((a,x)=>a+x.qty,0);
+  const count=()=>cart.length;
 
   // size chips
   $('sizes').innerHTML=SIZES.map(z=>`<button type="button" data-z="${z}">${z}</button>`).join('');
@@ -703,7 +737,7 @@ const SHOTS=["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEBAQEAwU
   function needSize(){if(pick)return true;const s=$('sizes');$('sizeErr').textContent=L().size_err;s.classList.remove('err');void s.offsetWidth;s.classList.add('err');return false}
 
   function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1800)}
-  function add(z){const f=cart.find(x=>x.size===z);f?f.qty++:cart.push({size:z,qty:1});save();render();const b=$('cBadge');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}
+  function add(z){cart.push({size:z});save();render();const b=$('cBadge');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}
 
   function open(){$('cart').classList.add('on');$('cartOv').classList.add('on');$('cart').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
     $('cDone').style.display='none';render()}
@@ -713,17 +747,14 @@ const SHOTS=["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEBAQEAwU
     const d=L(),n=count(),empty=n===0;
     $('cBadge').textContent=n;$('cBadge').classList.toggle('on',n>0);
     $('cItems').innerHTML=cart.map((x,k)=>`<div class="c-item"><div class="th"><img src="${SHOTS[0]}" alt=""></div>
-      <div><b>KROX 001</b><div class="sz">${d.i_size}: <select data-k="${k}" class="szs">${SIZES.map(z=>`<option${z===x.size?' selected':''}>${z}</option>`).join('')}</select></div>
-      <div class="qty"><button type="button" data-a="m" data-k="${k}" aria-label="-">−</button><span>${x.qty}</span><button type="button" data-a="p" data-k="${k}" aria-label="+">+</button></div></div>
-      <div class="pr">${fmt(PRICE*x.qty)} ${d.cur}<button type="button" class="rm" data-a="r" data-k="${k}">${d.i_rm}</button></div></div>`).join('');
+      <div><b>KROX 001 <small style="color:var(--dim);font-weight:400">· ${d.i_piece} ${k+1}</small></b><div class="sz">${d.i_size}: <select data-k="${k}" class="szs">${SIZES.map(z=>`<option${z===x.size?' selected':''}>${z}</option>`).join('')}</select></div></div>
+      <div class="pr">${fmt(PRICE)} ${d.cur}<button type="button" class="rm" data-a="r" data-k="${k}">${d.i_rm}</button></div></div>`).join('');
     const tot=n*PRICE;$('cSub').textContent=$('cTot').textContent=fmt(tot)+' '+d.cur;
     $('cEmpty').style.display=empty?'block':'none';$('cCheckout').style.display=empty?'none':'block';
   }
-  $('cItems').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const k=+b.dataset.k,a=b.dataset.a;
-    if(a==='p')cart[k].qty++;else if(a==='m'){if(cart[k].qty>1)cart[k].qty--;else cart.splice(k,1)}else if(a==='r')cart.splice(k,1);save();render()});
-  $('cItems').addEventListener('change',e=>{if(!e.target.classList.contains('szs'))return;const k=+e.target.dataset.k,z=+e.target.value;
-    const o=cart.findIndex((x,i)=>x.size===z&&i!==k);if(o>-1){cart[o].qty+=cart[k].qty;cart.splice(k,1)}else cart[k].size=z;save();render()});
-
+  $('cItems').addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.dataset.a!=='r')return;cart.splice(+b.dataset.k,1);save();render()});
+  $('cItems').addEventListener('change',e=>{if(!e.target.classList.contains('szs'))return;cart[+e.target.dataset.k].size=+e.target.value;save()});
+  $('cMore').onclick=()=>{close();document.getElementById('product').scrollIntoView({behavior:'smooth'})};
   $('cartBtn').onclick=open;$('cClose').onclick=close;$('cartOv').onclick=close;$('cShop').onclick=()=>{close();document.getElementById('product').scrollIntoView({behavior:'smooth'})};
   $('cDoneX').onclick=close;
   addEventListener('keydown',e=>{if(e.key==='Escape')close()});
@@ -743,14 +774,17 @@ const SHOTS=["data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEBAQEAwU
   const bad=(id,on)=>$(id).classList.toggle('bad',on);
   function normPhone(v){v=v.replace(/[\u0660-\u0669]/g,c=>c.charCodeAt(0)-1632).replace(/\D/g,'');if(v.startsWith('20'))v='0'+v.slice(2);return v}
   ['iName','iPhone','iGov','iAddr'].forEach(id=>{const f=()=>$(id).closest('.fld').classList.remove('bad');$(id).addEventListener('input',f);$(id).addEventListener('change',f)});
+  document.querySelectorAll('input[name=pay]').forEach(r=>r.addEventListener('change',()=>{$('instaBox').style.display=document.querySelector('input[name=pay]:checked').value==='insta'?'block':'none'}));
   $('waBtn').onclick=()=>{
     const name=$('iName').value.trim(),ph=normPhone($('iPhone').value),gov=$('iGov').value,addr=$('iAddr').value.trim(),note=$('iNote').value.trim();
     const ok1=name.length>1,ok2=/^01[0125]\d{8}$/.test(ph),ok3=!!gov,ok4=addr.length>5;
     bad('fn',!ok1);bad('fp',!ok2);bad('fg',!ok3);bad('fa',!ok4);
     if(!(ok1&&ok2&&ok3&&ok4&&cart.length)){const f=document.querySelector('.fld.bad');if(f)f.scrollIntoView({behavior:'smooth',block:'center'});return}
     const ar=cur==='ar',gi=GOV.find(x=>x[0]===gov),gname=ar?gi[1]:gi[0],tot=count()*PRICE,cu=ar?'جنيه':'EGP';
+    const pay=(document.querySelector('input[name=pay]:checked')||{}).value||'cod';
+    const payT=ar?(pay==='cod'?'كاش عند الاستلام':'InstaPay (هبعت سكرين التحويل هنا)'):(pay==='cod'?'Cash on delivery':'InstaPay (I will send the transfer screenshot here)');
     const id='KRX-'+Date.now().toString(36).toUpperCase().slice(-6);
-    const lines=cart.map((x,k)=>ar?`${k+1}) KROX 001 — مقاس ${x.size} × ${x.qty} = ${fmt(PRICE*x.qty)} ${cu}`:`${k+1}) KROX 001 — Size ${x.size} × ${x.qty} = ${fmt(PRICE*x.qty)} ${cu}`).join('\n');
+    const lines=cart.map((x,k)=>ar?`${k+1}) KROX 001 — مقاس ${x.size} — ${fmt(PRICE)} ${cu}`:`${k+1}) KROX 001 — Size ${x.size} — ${fmt(PRICE)} ${cu}`).join('\n');
     const msg=ar?
 `🛒 طلب جديد من موقع KROX
 رقم الطلب: ${id}
@@ -763,6 +797,7 @@ ${lines}
 📞 الموبايل: ${ph}
 📍 المحافظة: ${gname}
 🏠 العنوان: ${addr}${note?'\n📝 ملاحظات: '+note:''}
+💳 الدفع: ${payT}
 
 برجاء تأكيد الطلب ومصاريف الشحن 🙏`:
 `🛒 New KROX order
@@ -776,11 +811,12 @@ Total (excl. shipping): ${fmt(tot)} ${cu}
 📞 Phone: ${ph}
 📍 Governorate: ${gname}
 🏠 Address: ${addr}${note?'\n📝 Notes: '+note:''}
+💳 Payment: ${payT}
 
 Please confirm my order and the shipping cost 🙏`;
     const url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
     const w=window.open(url,'_blank');if(!w)location.href=url;
-    $('cItems').innerHTML='';$('cCheckout').style.display='none';$('cEmpty').style.display='none';$('cDone').style.display='block';
+    $('cItems').innerHTML='';$('cCheckout').style.display='none';$('cEmpty').style.display='none';$('cDone').style.display='block';$('cDoneI').style.display=pay==='insta'?'block':'none';
     cart=[];save();$('cBadge').classList.remove('on');
   };
 })();
